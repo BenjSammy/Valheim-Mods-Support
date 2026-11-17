@@ -1,0 +1,81 @@
+name: Apply mod labels
+on:
+  push:
+    branches: [Support]
+    paths: [README.md, .github/workflows/mod-labels.yml]
+  issues:
+    types: [opened, edited]
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Sync labels or classify issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64
+          import json
+          import os
+          import re
+          from pathlib import Path
+          from urllib.error import HTTPError
+          from urllib.parse import quote, unquote
+          from urllib.request import Request, urlopen
+
+          base = os.environ["GITHUB_API_URL"] + "/repos/" + os.environ["GITHUB_REPOSITORY"]
+          headers = {"Authorization": "Bearer " + os.environ["GH_TOKEN"],
+                     "Accept": "application/vnd.github+json", "Content-Type": "application/json"}
+
+          def api(path, method="GET", payload=None):
+              data = None if payload is None else json.dumps(payload).encode()
+              with urlopen(Request(base + path, data=data, headers=headers, method=method), timeout=20) as response:
+                  body = response.read()
+                  return json.loads(body) if body else None
+
+          def ensure_label(name):
+              path = "/labels/" + quote(name, safe="")
+              try:
+                  api(path)
+                  return
+              except HTTPError as error:
+                  if error.code != 404:
+                      raise
+              try:
+                  api("/labels", "POST", {"name": name, "color": "0E8A8A", "description": "Valheim mod: " + name})
+              except HTTPError as error:
+                  if error.code != 422:
+                      raise
+                  api(path)
+
+          readme = base64.b64decode(api("/contents/README.md")["content"]).decode()
+          names = {
+              match.group(1).casefold(): match.group(1)
+              for link in re.findall(r"/issues/new\?title=([^\s)]+)", readme)
+              if (match := re.fullmatch(r"\[([^\[\]]{1,50})\] *", unquote(link)))
+          }
+          event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text())
+          if issue := event.get("issue"):
+              number = int(issue["number"])
+              current = api(f"/issues/{number}")
+              title = re.match(r"^\[([^\[\]]+)\]", current["title"])
+              if title and (name := names.get(title.group(1).strip().casefold())):
+                  ensure_label(name)
+                  api(f"/issues/{number}/labels", "POST", {"labels": [name]})
+                  for label in current["labels"]:
+                      old = label["name"]
+                      if old.casefold() in names and old.casefold() != name.casefold():
+                          try:
+                              api(f"/issues/{number}/labels/" + quote(old, safe=""), "DELETE")
+                          except HTTPError as error:
+                              if error.code != 404:
+                                  raise
+          else:
+              for name in names.values():
+                  ensure_label(name)
+          PY
