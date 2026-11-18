@@ -38,6 +38,7 @@ This is the support repository for **BenjSammy’s Valheim mods**.
 
 | Mod | Tickets / Issues | Nouveau / New |
 | --- | --- | --- |
+| Ammo Link | [Voir les tickets](https://github.com/BenjSammy/Valheim-Mods-Support/issues?q=is%3Aissue%20%22%5BAmmo%20Link%5D%22) | [Ouvrir un ticket](https://github.com/BenjSammy/Valheim-Mods-Support/issues/new?title=%5BAmmo%20Link%5D%20) |
 | Auto Gather Tools | [Voir les tickets](https://github.com/BenjSammy/Valheim-Mods-Support/issues?q=is%3Aissue%20label%3A%22Auto%20Gather%20Tools%22) | [Ouvrir un ticket](https://github.com/BenjSammy/Valheim-Mods-Support/issues/new?title=%5BAuto%20Gather%20Tools%5D%20) |
 | Auto Offhand | [Voir les tickets](https://github.com/BenjSammy/Valheim-Mods-Support/issues?q=is%3Aissue%20%22%5BAuto%20Offhand%5D%22) | [Ouvrir un ticket](https://github.com/BenjSammy/Valheim-Mods-Support/issues/new?title=%5BAuto%20Offhand%5D%20) |
 | Chat Translate | [Voir les tickets](https://github.com/BenjSammy/Valheim-Mods-Support/issues?q=is%3Aissue%20label%3A%22Chat%20Translate%22) | [Ouvrir un ticket](https://github.com/BenjSammy/Valheim-Mods-Support/issues/new?title=%5BChat%20Translate%5D%20) |
