@@ -39,6 +39,7 @@ This is the support repository for **BenjSammy’s Valheim mods**.
 | Mod | Tickets / Issues | Nouveau / New |
 | --- | --- | --- |
 | Auto Gather Tools | [Voir les tickets](https://github.com/BenjSammy/Valheim-Mods-Support/issues?q=is%3Aissue%20label%3A%22Auto%20Gather%20Tools%22) | [Ouvrir un ticket](https://github.com/BenjSammy/Valheim-Mods-Support/issues/new?title=%5BAuto%20Gather%20Tools%5D%20) |
+| Auto Offhand | [Voir les tickets](https://github.com/BenjSammy/Valheim-Mods-Support/issues?q=is%3Aissue%20%22%5BAuto%20Offhand%5D%22) | [Ouvrir un ticket](https://github.com/BenjSammy/Valheim-Mods-Support/issues/new?title=%5BAuto%20Offhand%5D%20) |
 | Chat Translate | [Voir les tickets](https://github.com/BenjSammy/Valheim-Mods-Support/issues?q=is%3Aissue%20label%3A%22Chat%20Translate%22) | [Ouvrir un ticket](https://github.com/BenjSammy/Valheim-Mods-Support/issues/new?title=%5BChat%20Translate%5D%20) |
 | Classic Chat Everywhere | [Voir les tickets](https://github.com/BenjSammy/Valheim-Mods-Support/issues?q=is%3Aissue%20label%3A%22Classic%20Chat%20Everywhere%22) | [Ouvrir un ticket](https://github.com/BenjSammy/Valheim-Mods-Support/issues/new?title=%5BClassic%20Chat%20Everywhere%5D%20) |
 | Dungeon Keys | [Voir les tickets](https://github.com/BenjSammy/Valheim-Mods-Support/issues?q=is%3Aissue%20label%3A%22Dungeon%20Keys%22) | [Ouvrir un ticket](https://github.com/BenjSammy/Valheim-Mods-Support/issues/new?title=%5BDungeon%20Keys%5D%20) |
